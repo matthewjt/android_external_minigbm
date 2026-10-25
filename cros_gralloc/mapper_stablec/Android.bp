@@ -45,6 +45,9 @@ cc_library_shared {
 
 cc_library_shared {
     name: "mapper.minigbm_gbm_mesa",
+    // 32-bit variant required: libgui in 32-bit apps dlopens the mapper passthrough
+    // (Netflix TV 32-bit crashed: 'gralloc-mapper is missing' - only lib64 was shipped).
+    compile_multilib: "both",
     defaults: ["minigbm_gralloc4_common_defaults"],
     vintf_fragments: ["mapper.minigbm_gbm_mesa.xml"],
     shared_libs: [

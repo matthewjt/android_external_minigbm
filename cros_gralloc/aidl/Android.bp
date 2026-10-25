@@ -124,6 +124,9 @@ apex {
     certificate: ":com.android.hardware.certificate",
     updatable: false,
     vendor: true,
+    // The apex module controls packaged arch variants (same lesson as egl.mesa):
+    // 32-bit apps need lib/hw/mapper.minigbm_gbm_mesa.so -> package both.
+    compile_multilib: "both",
 
     binaries: [
         "android.hardware.graphics.allocator-service.minigbm_gbm_mesa",

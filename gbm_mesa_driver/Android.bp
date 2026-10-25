@@ -15,6 +15,8 @@
 
 cc_library_shared {
     name: "libminigbm_gralloc_gbm_mesa",
+    // multilib: needed by the 32-bit mapper variant (32-bit gralloc-mapper chain).
+    compile_multilib: "both",
     defaults: ["minigbm_cros_gralloc_library_defaults"],
     cflags: [
         "-DDRV_EXTERNAL",
@@ -30,6 +32,8 @@ cc_library_shared {
 
 cc_library_shared {
     name: "libgbm_mesa_wrapper",
+    // multilib: required-by chain of the 32-bit mapper (libminigbm_gralloc_gbm_mesa).
+    compile_multilib: "both",
     vendor: true,
     srcs: ["gbm_mesa_wrapper.c"],
     shared_libs: [
