@@ -57,6 +57,9 @@ cc_library {
 
 cc_library {
     name: "libminigbm_gralloc4_utils_gbm_mesa",
+    // multilib: apex member (transitive dep of the 32-bit mapper); the APEX arm
+    // variant requires an arm variant of EVERY member.
+    compile_multilib: "both",
     defaults: ["minigbm_cros_gralloc_defaults"],
     vendor: true,
     srcs: [
